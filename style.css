@@ -161,11 +161,6 @@ h1, h2, h3 { color: var(--brand-black); }
     justify-content: center;
     margin-bottom: 20px;
 }
-.card-icon svg {
-    width: 50px;
-    height: 50px;
-    stroke: var(--brand-red);
-}
 
 .service-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
 .service-card p { font-size: 1.1rem; color: #555; }
@@ -184,29 +179,38 @@ h1, h2, h3 { color: var(--brand-black); }
 }
 .gallery-img:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-/* --- Review Slider (Pure CSS) --- */
+/* --- Continuous Auto-Playing Review Marquee --- */
 .review-slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 20px;
+    overflow: hidden; /* Hides the cards outside the container */
+    width: 100%;
     padding-bottom: 20px;
 }
+.review-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: scrollReviews 25s linear infinite; /* Adjust '25s' to make it faster or slower */
+}
+.review-track:hover {
+    animation-play-state: paused; /* Pauses the slider when someone tries to read a review */
+}
 .review-card {
-    flex: 0 0 100%;
-    scroll-snap-align: center;
+    width: 350px; /* Forces cards to stay the same size */
+    flex: 0 0 auto;
     background: var(--white);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     text-align: center;
 }
-@media (min-width: 768px) {
-    .review-card { flex: 0 0 48%; }
-}
 .stars { color: #c1121f; font-size: 2rem; margin-bottom: 10px; }
 .review-text { font-style: italic; font-size: 1.2rem; margin-bottom: 15px; }
 .review-author { font-weight: bold; color: var(--brand-black); }
+
+@keyframes scrollReviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 15px)); } /* Shifts exactly half the track to create the loop */
+}
 
 /* --- 4-Column Socials Grid --- */
 .social-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
@@ -219,7 +223,6 @@ h1, h2, h3 { color: var(--brand-black); }
     transition: transform 0.3s ease;
 }
 .social-card:hover { transform: translateY(-5px); }
-.social-icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--brand-red); }
 .social-card h3 { color: var(--white); font-size: 1.8rem; margin-bottom: 15px; }
 .social-card p { font-size: 1rem; margin-bottom: 25px; color: #ccc; min-height: 50px; }
 
