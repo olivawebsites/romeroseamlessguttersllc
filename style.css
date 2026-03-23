@@ -135,15 +135,15 @@ h1, h2, h3 { color: var(--brand-black); }
 .hero-content h1 {
     font-size: 4.5rem;
     color: var(--white);
+    margin-bottom: 20px;
     line-height: 1.1;
-    margin-bottom: 0;
 }
 .hero-content p {
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-/* --- Services --- */
+/* --- Services (Premium SVG Icons) --- */
 .services-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .service-card {
     background: var(--white);
@@ -160,6 +160,11 @@ h1, h2, h3 { color: var(--brand-black); }
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+}
+.card-icon svg {
+    width: 50px;
+    height: 50px;
+    stroke: var(--brand-red);
 }
 
 .service-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
@@ -179,38 +184,29 @@ h1, h2, h3 { color: var(--brand-black); }
 }
 .gallery-img:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-/* --- Continuous Auto-Playing Review Marquee --- */
+/* --- Review Slider (Pure CSS) --- */
 .review-slider {
-    overflow: hidden; 
-    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
     padding-bottom: 20px;
 }
-.review-track {
-    display: flex;
-    gap: 30px;
-    width: max-content;
-    animation: scrollReviews 25s linear infinite; 
-}
-.review-track:hover {
-    animation-play-state: paused; 
-}
 .review-card {
-    width: 350px; 
-    flex: 0 0 auto;
+    flex: 0 0 100%;
+    scroll-snap-align: center;
     background: var(--white);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     text-align: center;
 }
+@media (min-width: 768px) {
+    .review-card { flex: 0 0 48%; }
+}
 .stars { color: #c1121f; font-size: 2rem; margin-bottom: 10px; }
 .review-text { font-style: italic; font-size: 1.2rem; margin-bottom: 15px; }
 .review-author { font-weight: bold; color: var(--brand-black); }
-
-@keyframes scrollReviews {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 15px)); } 
-}
 
 /* --- 4-Column Socials Grid --- */
 .social-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
@@ -223,6 +219,7 @@ h1, h2, h3 { color: var(--brand-black); }
     transition: transform 0.3s ease;
 }
 .social-card:hover { transform: translateY(-5px); }
+.social-icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--brand-red); }
 .social-card h3 { color: var(--white); font-size: 1.8rem; margin-bottom: 15px; }
 .social-card p { font-size: 1rem; margin-bottom: 25px; color: #ccc; min-height: 50px; }
 
@@ -274,19 +271,6 @@ h1, h2, h3 { color: var(--brand-black); }
     background-color: var(--white);
 }
 
-/* --- Grader Safe Icon Sizing --- */
-.service-icon-img {
-    width: 50px;
-    height: 50px;
-    display: block;
-}
-.social-icon-img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
 /* --- Footer --- */
 .footer {
     background: var(--brand-black);
@@ -300,6 +284,5 @@ h1, h2, h3 { color: var(--brand-black); }
     .contact-wrapper, .gallery-grid { grid-template-columns: 1fr; }
     .social-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .hero-content h1 { font-size: 3.5rem; }
-    .hero-content h2 { font-size: 3rem !important; }
     .nav-links { display: none; } 
 }
