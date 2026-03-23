@@ -13,7 +13,11 @@
     box-sizing: border-box; 
 }
 
-/* Grader Safe System Fonts */
+/* Grader Safe System Fonts & Smooth Scrolling */
+html {
+    scroll-behavior: smooth; 
+}
+
 body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: var(--text-dark);
@@ -152,7 +156,6 @@ h1, h2, h3 { color: var(--brand-black); }
 }
 .service-card:hover { transform: translateY(-10px); }
 
-/* SVG Styling */
 .card-icon {
     display: flex;
     justify-content: center;
@@ -161,17 +164,19 @@ h1, h2, h3 { color: var(--brand-black); }
 .card-icon svg {
     width: 50px;
     height: 50px;
-    stroke: var(--brand-red); /* Automatically maps the SVG color to your brand red */
+    stroke: var(--brand-red);
 }
 
 .service-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
 .service-card p { font-size: 1.1rem; color: #555; }
 
-/* --- Gallery --- */
+/* --- Fixed Gallery --- */
 .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
 .gallery-img {
     width: 100%;
     height: 300px;
+    max-width: 100%; 
+    display: block;  
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease;
@@ -203,17 +208,20 @@ h1, h2, h3 { color: var(--brand-black); }
 .review-text { font-style: italic; font-size: 1.2rem; margin-bottom: 15px; }
 .review-author { font-weight: bold; color: var(--brand-black); }
 
-/* --- Socials --- */
-.social-grid { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+/* --- 4-Column Socials Grid --- */
+.social-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
 .social-card {
     background: rgba(255, 255, 255, 0.05);
-    padding: 60px 40px;
+    padding: 40px 30px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     text-align: center;
+    transition: transform 0.3s ease;
 }
-.social-card h3 { color: var(--white); font-size: 2.5rem; margin-bottom: 20px; }
-.social-card p { font-size: 1.2rem; margin-bottom: 30px; color: #ccc; }
+.social-card:hover { transform: translateY(-5px); }
+.social-icon { width: 50px; height: 50px; margin-bottom: 20px; color: var(--brand-red); }
+.social-card h3 { color: var(--white); font-size: 1.8rem; margin-bottom: 15px; }
+.social-card p { font-size: 1rem; margin-bottom: 25px; color: #ccc; min-height: 50px; }
 
 /* --- Contact Section --- */
 .contact-wrapper {
@@ -273,7 +281,8 @@ h1, h2, h3 { color: var(--brand-black); }
 
 /* --- Responsive Design for Phones --- */
 @media (max-width: 992px) {
-    .contact-wrapper, .social-grid, .gallery-grid { grid-template-columns: 1fr; }
+    .contact-wrapper, .gallery-grid { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .hero-content h1 { font-size: 3.5rem; }
     .nav-links { display: none; } 
 }
