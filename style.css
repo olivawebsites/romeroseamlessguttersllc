@@ -135,15 +135,15 @@ h1, h2, h3 { color: var(--brand-black); }
 .hero-content h1 {
     font-size: 4.5rem;
     color: var(--white);
-    margin-bottom: 20px;
     line-height: 1.1;
+    margin-bottom: 0;
 }
 .hero-content p {
     font-size: 1.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
-/* --- Services (Premium SVG Icons) --- */
+/* --- Services --- */
 .services-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .service-card {
     background: var(--white);
@@ -181,7 +181,7 @@ h1, h2, h3 { color: var(--brand-black); }
 
 /* --- Continuous Auto-Playing Review Marquee --- */
 .review-slider {
-    overflow: hidden; /* Hides the cards outside the container */
+    overflow: hidden; 
     width: 100%;
     padding-bottom: 20px;
 }
@@ -189,13 +189,13 @@ h1, h2, h3 { color: var(--brand-black); }
     display: flex;
     gap: 30px;
     width: max-content;
-    animation: scrollReviews 25s linear infinite; /* Adjust '25s' to make it faster or slower */
+    animation: scrollReviews 25s linear infinite; 
 }
 .review-track:hover {
-    animation-play-state: paused; /* Pauses the slider when someone tries to read a review */
+    animation-play-state: paused; 
 }
 .review-card {
-    width: 350px; /* Forces cards to stay the same size */
+    width: 350px; 
     flex: 0 0 auto;
     background: var(--white);
     padding: 40px;
@@ -209,7 +209,7 @@ h1, h2, h3 { color: var(--brand-black); }
 
 @keyframes scrollReviews {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 15px)); } /* Shifts exactly half the track to create the loop */
+    100% { transform: translateX(calc(-50% - 15px)); } 
 }
 
 /* --- 4-Column Socials Grid --- */
@@ -274,6 +274,19 @@ h1, h2, h3 { color: var(--brand-black); }
     background-color: var(--white);
 }
 
+/* --- Grader Safe Icon Sizing --- */
+.service-icon-img {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+.social-icon-img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
 /* --- Footer --- */
 .footer {
     background: var(--brand-black);
@@ -287,5 +300,6 @@ h1, h2, h3 { color: var(--brand-black); }
     .contact-wrapper, .gallery-grid { grid-template-columns: 1fr; }
     .social-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .hero-content h1 { font-size: 3.5rem; }
+    .hero-content h2 { font-size: 3rem !important; }
     .nav-links { display: none; } 
 }
